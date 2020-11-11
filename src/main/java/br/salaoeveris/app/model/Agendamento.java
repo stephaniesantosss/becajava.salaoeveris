@@ -19,6 +19,7 @@ public class Agendamento extends BaseResponse {
 	private Long Id;
 	private Date datahora;
 	
+	
 	public Date getDatahora() {
 		return datahora;
 	}
@@ -29,6 +30,18 @@ public class Agendamento extends BaseResponse {
     @JoinColumn(name = "IdCliente")
     private Cliente Cliente;
 	
+	public Cliente getCliente() {
+		return Cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		Cliente = cliente;
+	}
+	public Servico getServico() {
+		return Servico;
+	}
+	public void setServico(Servico servico) {
+		Servico = servico;
+	}
 	@ManyToOne
     @JoinColumn(name = "IdServico")
     private Servico Servico;
@@ -38,6 +51,10 @@ public class Agendamento extends BaseResponse {
 	}
 	public void setId(Long id) {
 		Id = id;
+	}
+	public void setCliente(Long id2) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -77,21 +77,6 @@ public class ClienteService {
 		return response;
 	}
 
-	public ClienteResponse obterByCpf(String cpf) {
-		Cliente cliente = _repository.findByCpf(cpf);	
-		ClienteResponse response = new ClienteResponse();
-		
-		if (cliente == null) {
-			response.Message = "Cliente não encontrado";
-			response.StatusCode = 404;
-			return response;
-		}
-
-		response.Message = "Cliente obtido com sucesso";
-		response.StatusCode = 200;
-		return response;
-	}
-
 	public ClienteList listar() {
 
 		List<Cliente> lista = _repository.findAll();

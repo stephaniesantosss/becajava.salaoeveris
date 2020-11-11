@@ -13,7 +13,7 @@ public class AgendamentoList extends BaseResponse {
 		return Agendamentos;
 	}
 
-	public void setServicos(List<Agendamento> agendamentos) {
+	public void setAgendamentos(List<Agendamento> agendamentos) {
 		Agendamentos = agendamentos;
 	}
 
