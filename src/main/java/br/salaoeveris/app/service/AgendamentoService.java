@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import br.salaoeveris.app.model.Agendamento;
 import br.salaoeveris.app.repository.AgendamentoRepository;
-
 import br.salaoeveris.app.request.AgendamentoRequest;
 import br.salaoeveris.app.response.BaseResponse;
 

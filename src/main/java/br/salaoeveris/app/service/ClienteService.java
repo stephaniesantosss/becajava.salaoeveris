@@ -1,5 +1,6 @@
 package br.salaoeveris.app.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,18 +59,17 @@ public class ClienteService {
 	}
 
 	public ClienteResponse obter(Long id) {
-		Optional<Cliente> cliente = _repository.findById(id);		
+		Optional<Cliente> cliente = _repository.findById(id);
 		ClienteResponse response = new ClienteResponse();
-		
+
 		if (cliente == null) {
 			response.Message = "Cliente não encontrado";
 			response.StatusCode = 404;
 			return response;
 		}
-		
-		response.setCpf(cliente.get().getCpf());
+
 		response.setNome(cliente.get().getNome());
-		response.setTel(cliente.get().getTelefone());
+		response.setTelefone(cliente.get().getTelefone());
 		response.setEndereco(cliente.get().getEndereco());
 
 		response.Message = "Cliente obtido com sucesso";
@@ -77,16 +77,40 @@ public class ClienteService {
 		return response;
 	}
 
-	public ClienteList listar() {
-
+	public ClienteResponse listar() {
+        
+		//Lista de Clientes
 		List<Cliente> lista = _repository.findAll();
+        
+		//Lista de Clientes do response dentro de um array
+		List<ClienteResponse> listarclienteresponse = new ArrayList<ClienteResponse>();
 
+		//response recebe ClienteList novo
 		ClienteList response = new ClienteList();
-		response.setClientes(lista);
+		
+		//cliente recebe ClinteResponse novo
+		ClienteResponse cliente = new ClienteResponse();
+        
+		//o array coloca o objeto da lista no clientelistar e varre dentro da lista
+		for (Cliente clientelistar : lista) {
+            
+			//cliente recebe nova lista de ClienteResponse
+			cliente = new ClienteResponse();
+
+			cliente.setEndereco(clientelistar.getEndereco());
+			cliente.setTelefone(clientelistar.getTelefone());
+			cliente.setNome(clientelistar.getNome());
+
+			listarclienteresponse.add(cliente);
+
+		}
+
+		response.setClientes(listarclienteresponse);
+
 		response.StatusCode = 200;
 		response.Message = "Clientes obtidos com sucesso.";
 
-		return response;
+		return cliente;
 	}
 
 }

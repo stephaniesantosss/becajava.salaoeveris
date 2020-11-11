@@ -45,7 +45,7 @@ public class ClienteController extends BaseController {
 	@GetMapping
     public ResponseEntity listar() {		
 		try {
-			ClienteList clientes = _service.listar();  		
+			ClienteResponse clientes = _service.listar();  		
 	    	return ResponseEntity.status(HttpStatus.OK).body(clientes);			
 		} catch (Exception e) {
 			return ResponseEntity.status(errorBase.StatusCode).body(errorBase);			

@@ -8,5 +8,5 @@ import br.salaoeveris.app.model.Cliente;
 @Repository
 	public interface ClienteRepository extends JpaRepository<Cliente, Long>{
 	
-
+	Cliente findByCpf(String cpf);
 }
